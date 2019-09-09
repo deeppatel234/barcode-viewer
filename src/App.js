@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Barcode from 'react-barcode';
 import './App.css';
 
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+
 function App() {
+  const [barcodeValue, setBarcodeValue] = useState('Hello World');
+  const [barcodeMargin, setBarcodeMargin] = useState(2);
+  const [barcodeHeight, setBarcodeHeight] = useState(100);
+
+  const onChangeBarcode = ({ target }) => {
+    setBarcodeValue(target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input id="barcodeInput" value={barcodeValue} onChange={onChangeBarcode} />
+      <div id="barcode-wrapper">
+        <Barcode value={barcodeValue} width={barcodeMargin} height={barcodeHeight}/>
+      </div>
+      <div id="slider-wrapper">
+        width
+        <Slider min={1} max={7} value={barcodeMargin} onChange={setBarcodeMargin} />
+      </div>
+      <div id="slider-wrapper">
+        height
+        <Slider min={90} max={200} value={barcodeHeight} onChange={setBarcodeHeight} />
+      </div>
     </div>
   );
 }
