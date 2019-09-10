@@ -2,6 +2,7 @@
   "name": "barcode-viewer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://deeppatel234.github.io/barcode-viewer/",
   "dependencies": {
     "rc-slider": "^8.7.1",
     "react": "^16.9.0",
